@@ -11,6 +11,7 @@ Rectangle
 
     MouseArea
     {
+        id: _dragArea
         anchors.fill: parent
         drag.target: parent
         drag.axis: Drag.YAxis

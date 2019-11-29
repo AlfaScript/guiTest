@@ -2,8 +2,6 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
-// import QtQuick.Layouts 1.12
-
 ApplicationWindow
 {
     visible: true
@@ -79,7 +77,7 @@ ApplicationWindow
         {
             id: _soundsName
             text: qsTr("SOUNDS NAME")
-            x: parent.width / 2
+            x: parent.width / 2 - width / 2
         }
 
         Rectangle
@@ -119,8 +117,8 @@ ApplicationWindow
             id: _timelineButtonPlay
             height: parent.height / 2
             width: 100
-            x: parent.width / 2 - width / 2
-            y: parent.height - height
+            x: parent.width / 2 + 75 - width / 2
+            y: parent.height - _timeline.height - height
             displayText: "PLAY"
 
             property bool isPlay: false
@@ -149,60 +147,71 @@ ApplicationWindow
             id: _timelineButtonStop
             height: parent.height / 2
             width: 100
-            x: parent.width / 2 - _timelineButtonPlay.width - width / 2 - 100
-            y: parent.height - height
+            x: parent.width / 2 - 75 - width / 2
+            y: parent.height - _timeline.height - height
             displayText: "STOP"
         }
     }
 
-    Item
+    Rectangle // Area of the mixer
     {
         id: _mixer
-        anchors.fill: parent
+        anchors.top: _headerToolBar.bottom
+        anchors.bottom: _timelineButtons.top
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-        Rectangle
+        gradient : Gradient
         {
-            id: _centerLine
-            x: 0
-            y: parent.height / 2
-            width: parent.width
-            height: 10
-            color: "black"
+            orientation: Gradient.Horizontal
+            GradientStop { position: 0; color: "#2A2906" }
+            GradientStop { position: 0.25; color: "#2B1200" }
+            GradientStop { position: 0.6; color: "#091615" }
+            GradientStop { position: 1; color: "#1D1D1B" }
         }
 
-        Circle
-        {
-            id: _mixer1
-            x: parent.width / 6
-            y: parent.height / 2
-        }
+        SoundEffectsBackground { }
 
-        Circle
+        Item
         {
-            id: _mixer2
-            x: 2 * parent.width / 6
-            y: parent.height / 2
-        }
+            id: _mixerPoints
+            anchors.fill: parent
 
-        Circle
-        {
-            id: _mixer3
-            x: 3 * parent.width / 6
-            y: parent.height / 2
-        }
+            Circle
+            {
+                id: _mixer1
+                x: (parent.width / 5 / 2) - width / 2
+                y: parent.height / 2 - height / 2
 
-        Circle
-        {
-            id: _mixer4
-            x: 4 * parent.width / 6
-            y: parent.height / 2
-        }
+            }
 
-        Circle
-        {
-            id: _mixer5
-            x: 5 * parent.width / 6
-            y: parent.height / 2
+            Circle
+            {
+                id: _mixer2
+                x: (3 * parent.width / 5 / 2) - width / 2
+                y: parent.height / 2 - height / 2
+            }
+
+            Circle
+            {
+                id: _mixer3
+                x: (5 * parent.width / 5 / 2) - width / 2
+                y: parent.height / 2 - height / 2
+            }
+
+            Circle
+            {
+                id: _mixer4
+                x: (7 * parent.width / 5 / 2) - width / 2
+                y: parent.height / 2 - height / 2
+            }
+
+            Circle
+            {
+                id: _mixer5
+                x: (9 * parent.width / 5 / 2) - width / 2
+                y: parent.height / 2 - height / 2
+            }
         }
     }
 }

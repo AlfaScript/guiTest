@@ -2,7 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ToolBarsButton.qml</file>
-        <file>PanelsGradient.qml</file>
         <file>Circle.qml</file>
+        <file>SoundEffectsBackground.qml</file>
+        <file>Line.qml</file>
     </qresource>
 </RCC>

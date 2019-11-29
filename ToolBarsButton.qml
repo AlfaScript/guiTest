@@ -8,13 +8,13 @@ Button
 
     property string displayText: ""
     property int fontSize: 15
-    property string rectangleBorderColor: "white"
+    property color rectangleBorderColor: "white"
 
-    contentItem : Text
+    Text
     {
         text: qsTr(displayText)
-        color: "#91994B"
         anchors.centerIn: parent
+        color: "#91994B"
         font.pointSize: fontSize
         font.bold: true
     }
